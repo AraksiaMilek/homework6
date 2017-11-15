@@ -1,18 +1,21 @@
-
-
-for(let i=0;;i++)
+let isX = true;
   
-{
-	nextMove(board, isX);
-	makeMove(board, location, isX);
-  
-	isX=!isX;
+  while(true){   
 
-	if(findWinner(board)===undefined)
+      let next = nextMove(board, isX);
 
-		continue;
-	else
-	{
-		alert('the winner is: ' + findWinner(board).winner + ', and the winning locations are: ' + findWinner(board).winningLocations);
-		break;
-	}
+      if(makeMove(board, next, isX) === -1) {
+
+          alert("shayze!");
+
+          break;
+      }
+
+      makeMove(board, next, isX);
+    
+      if(findWinner(board) !== undefined) {
+        alert(findWinner(board)["winner"] + " won the game!");
+          break;
+      }
+     
+  }
